@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario de Creación de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="css/styleCreateAccount.css">
+    <style>
+        body{
+            background-image: url('img/wave.png');
+            background-size: cover;
+            background-position: center;
+        }
+              
+    </style>
+</head>
+<body>
+    
+	<h1>Formulario de Creación de Usuario</h1>
+	<form>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" required>
+
+		<label for="apellido">Ap    ellido:</label>
+		<input type="text" id="apellido" name="apellido" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">Contraseña:</label>
+		<input type="password" id="password" name="password" required>
+
+        <a href="#" class="cta">
+            <span>Crear Usuario</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+	</form>
+</body>
+</html>
