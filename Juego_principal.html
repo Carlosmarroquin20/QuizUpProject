@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Juego de preguntas</title>
+  <link rel="stylesheet" href="Style_game.css">
+  <style>body{
+    background-image: url('img/principal.jpg');
+    background-size: cover;
+    background-position: center;
+}</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Juego de preguntas</h1>
+
+    <div id="pregunta"></div>
+    <div id="respuestas">
+      <input type="radio" name="opcion" value="0"> <span id="opcion0"></span><br>
+      <input type="radio" name="opcion" value="1"> <span id="opcion1"></span><br>
+      <input type="radio" name="opcion" value="2"> <span id="opcion2"></span><br>
+    </div>
+    <button onclick="comprobarRespuesta()">Comprobar</button>
+    <a class="geography" href="Categorias.html">Regresar a la pantalla principal</a>
+    <div id="resultado"></div>
+
+    <script>
+      var preguntas = [
+        {
+          pregunta: "¿Cuál es el océano más grande del mundo?",
+          respuestas: ["El Océano Atlántico", "El Océano Índico", "El Océano Pacífico"],
+          respuestaCorrecta: 2
+        },
+        {
+          pregunta: "¿Cuál es el país más grande de Sudamérica?",
+          respuestas: ["Argentina", "Brasil", "Colombia"],
+          respuestaCorrecta: 1
+        },
+        {
+          pregunta: "¿Cuál es el río más largo del mundo?",
+          respuestas: ["El Río Nilo", "El Río Amazonas", "El Río Mississippi"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Qué zona árida es considerada como la más extensa a nivel global?",
+          respuestas: ["El Desierto del Sahara", "El Desierto de Gobi", "El Desierto de Atacama"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Cuál es el país más grande de Europa?",
+          respuestas: ["Rusia", "Alemania", "Francia"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Cuál es la cordillera más larga del mundo?",
+          respuestas: ["Los Andes", "Los Alpes", "El Himalaya"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Cuál es el país más pequeño del mundo?",
+          respuestas: ["El Vaticano", "Mónaco", "Nauru"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Cuál es la capital de España?",
+          respuestas: ["Madrid", "Barcelona", "Sevilla"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿Cuál es la montaña más alta de América del Norte?",
+          respuestas: ["El Monte Denali", "El Monte McKinley", "El Pico de Orizaba"],
+          respuestaCorrecta: 0
+        },
+        {
+          pregunta: "¿En qué continente se encuentra el Río Amazonas?",
+          respuestas: ["América del Sur", "África", "Asia"],
+          respuestaCorrecta: 0
+        }
+      ];
+
+      var preguntaActual = 0;
+      var resultado = document.getElementById("resultado");
+      var opciones = document.getElementsByName("opcion");
+
+      function mostrarPregunta() {
+        var pregunta = preguntas[preguntaActual];
+        document.getElementById("pregunta").textContent = pregunta.pregunta;
+        document.getElementById("opcion0").textContent = pregunta.respuestas[0];
+        document.getElementById("opcion1").textContent = pregunta.respuestas[1];
+        document.getElementById("opcion2").textContent = pregunta.respuestas[2];
+      }
+
+      function comprobarRespuesta() {
+        var respuestaSeleccionada = -1;
+        for (var i = 0; i < opciones.length; i++) {
+          if (opciones[i].checked) {
+            respuestaSeleccionada = i;
+            break;
+          }
+        }
+
+        if (respuestaSeleccionada === preguntas[preguntaActual].respuestaCorrecta) {
+          resultado.textContent = "¡Respuesta correcta!";
+        } else {
+          resultado.textContent = "Respuesta incorrecta. La respuesta correcta era: " + preguntas[preguntaActual].respuestas[preguntas[preguntaActual].respuestaCorrecta];
+        }
+
+        preguntaActual++;
+
+        if (preguntaActual < preguntas.length) {
+          mostrarPregunta();
+        } else {
+          document.getElementById("pregunta").style.display = "none";
+          document.getElementById("respuestas").style.display = "none";
+          document.getElementsByTagName("button")[0].style.display = "none";
+        }
+      }
+
+      mostrarPregunta();
+    </script>
+  </div>
+</body>
+</html>
